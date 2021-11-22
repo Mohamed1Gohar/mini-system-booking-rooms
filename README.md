@@ -1,5 +1,21 @@
 
 ## Mini system for booking rooms
+-----------
+
+after clone repo, run this command
+
+php artisan migrate:refresh --seed
+
+
+#### To Login as Admin : user (username or phone or email)
+admin,01000500900,admin@admin.com
+
+password
+
+#### To Login as Client : user (username or phone or email)
+client,01100005555,client@client.com
+
+password
 
 
 ----------------------------------------

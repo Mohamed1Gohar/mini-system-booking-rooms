@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Validator;
 
 class LoginController extends Controller
 {
@@ -37,6 +38,19 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    protected function validateLogin(Request $request)
+    {
+//        dd( $this->username());
+        Validator::extend('without_spaces', function($attr, $value){
+            return preg_match('/^\S*$/u', $value);
+        });
+
+        $request->validate([
+            $this->username() => 'required|string|without_spaces',
+            'password' => 'required|string',
+        ]);
     }
 
     protected function credentials(Request $request)
