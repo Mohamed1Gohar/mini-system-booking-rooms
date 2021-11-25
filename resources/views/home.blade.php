@@ -15,6 +15,12 @@
                     @endif
 
                     {{ __('You are logged in!') }}
+
+                        <br>
+                        <br>
+                    <h4>Dashboard: Mini system For Booking Rooms</h4>
+
+
                 </div>
             </div>
         </div>

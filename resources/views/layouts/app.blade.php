@@ -2,6 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSRF Token -->
@@ -18,6 +19,14 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+
+    <!-- new -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    @yield('style')
 </head>
 <body>
     <div id="app">
@@ -52,6 +61,26 @@
                                 </li>
                             @endif
                         @else
+
+                            @role('Admin')
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('rooms.index') }}">{{ __('Rooms') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('users.index') }}">{{ __('Users') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('bookings.index') }}">{{ __('Bookings') }}</a>
+                            </li>
+                            @endrole
+                            @role('Client')
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('rooms.booking-to-client') }}">{{ __('Rooms') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('booking.rooms-clint') }}">{{ __('My Bookings') }}</a>
+                            </li>
+                            @endrole
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
@@ -79,5 +108,15 @@
             @yield('content')
         </main>
     </div>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+
+    <!-- new -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+
+    @yield('script')
 </body>
 </html>

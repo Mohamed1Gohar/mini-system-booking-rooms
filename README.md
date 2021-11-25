@@ -2,9 +2,15 @@
 ## Mini system for booking rooms
 -----------
 
-after clone repo, run this command
+after clone repo, and setting configuration database 
 
+#### run this command
+
+php artisan migrate
+php artisan db:seed
+####or
 php artisan migrate:refresh --seed
+
 
 
 #### To Login as Admin : user (username or phone or email)
@@ -17,6 +23,10 @@ client,01100005555,client@client.com
 
 password
 
+#### or
+user@user.com
+
+password
 
 ----------------------------------------
 ## About Laravel
